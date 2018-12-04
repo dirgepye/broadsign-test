@@ -23,3 +23,39 @@ label {
   font-family: Georgia, Times, 'Times New Roman', serif;
   line-height: 1.5em;
 }
+
+.app-wrapper {
+  // max-width: calc(768px + 16px * 2);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  min-height: 100%;
+  // padding: 0 16px;
+  padding: 0 40px;
+  flex-direction: column;
+}
+
+.section-title {
+  text-align: left;
+
+  .section-title-content {
+    text-transform: uppercase;
+    background-color:#fafafa;
+    padding: 4px 8px;
+    // border: 1px solid #222;
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    z-index: 3;
+    margin-left: 10px;
+  }
+
+  .section-title-divider {
+    overflow: visible;
+    height: 5px;
+    background-color: #222;
+    border: none;
+    position: relative;
+    top: -46px;
+  }
+}

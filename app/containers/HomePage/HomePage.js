@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /*
  * HomePage
  *
@@ -5,29 +6,24 @@
  */
 
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import ReposList from 'components/ReposList';
-import './style.scss';
+import PhotoBoardSection from 'components/PhotoBoardSection';
+
+const stuff = ['fart', 'fdsafsd', 'poo', 'who cares'];
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
    */
-  componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
-  }
+  // componentDidMount() {
+  //   if (this.props.username && this.props.username.trim().length > 0) {
+  //     this.props.onSubmitForm();
+  //   }
+  // }
 
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos,
-    };
-
     return (
       <article>
         <Helmet>
@@ -37,24 +33,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         <div className="home-page">
           <section className="centered">
             <h2>Start your next react project in seconds</h2>
-            <p>A minimal <i>React-Redux</i> boilerplate with all the best practices</p>
-          </section>
-          <section>
-            <h2>Try me!</h2>
-            <form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">
-              Show Github repositories by
-                <span className="at-prefix">@</span>
-                <input
-                  id="username"
-                  type="text"
-                  placeholder="flexdinesh"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                />
-              </label>
-            </form>
-            <ReposList {...reposListProps} />
+            {stuff.map((key) => <PhotoBoardSection sectionTitle={key} />)}
           </section>
         </div>
       </article>
@@ -63,16 +42,4 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
 }
 
 HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool,
-  ]),
-  repos: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.bool,
-  ]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
 };
